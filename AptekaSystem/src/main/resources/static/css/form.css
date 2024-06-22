@@ -1,0 +1,376 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container_body {
+    width: auto;
+    height: 698px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 5px;
+}
+
+h1 {
+    margin: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#img1 {
+    width: 73px;
+}
+
+#img1:hover {
+    opacity: 0.8;
+}
+
+/* Таблица */
+
+.container_table {
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.table  {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.table th, .table td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+tr.selected {
+    background-color: #cccccc;
+}
+
+.table tbody tr:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+.table thead tr th:hover {
+    background-color: #b3d1ff;
+    cursor: pointer;
+}
+
+/* Кнопки, лэйблы, импуты, селекты */
+
+label {
+    display: block;
+    width: 100%;
+}
+
+input {
+    height: 35px;
+    width: 220px;
+    margin: 10px;
+    border: 1px solid #778899;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[readonly] {
+    cursor: not-allowed;
+}
+
+input[type="checkbox"] {
+    height: auto;
+    width: auto;
+    margin: 0;
+}
+
+select {
+    height: 18px;
+    width: 100px;
+}
+
+button {
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[disabled]{
+   background-color: #cccccc;
+   color: #666666;
+   cursor: default;
+}
+
+button[disabled] {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: default;
+}
+
+button[disabled]:hover {
+    opacity: 1;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.grayButton  {
+    background-color: #C0C0C0;
+}
+
+.greenButton {
+    background-color: #98FB98;
+}
+
+.redButton {
+    background-color: #FA8072;
+}
+
+.blueButton {
+    background-color: #AFEEEE;
+}
+
+.container_buttons {
+    display: flex;
+    justify-content: right;
+    margin: 10px;
+    gap: 10px;
+}
+
+.container_radio {
+    display: flex;
+    width: 200px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Модальное окно */
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    width: auto;
+    height: 60%;
+    gap: 20px;
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    overflow-y: auto;
+    z-index: 9999;
+    flex-direction: column;
+}
+
+#modalCreateShift {
+    height: 260px;
+}
+
+/* Главная */
+
+.container_cards, .container_reports {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    align-items: center;
+    gap: 27px;
+    padding: 10px;
+}
+
+.report {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    align-items: center;
+    gap: 27px;
+    padding: 10px;
+}
+
+.card img {
+    width: 147px;
+    height: auto;
+    display: block;
+}
+
+.card:hover {
+    transform: scale(0.95);
+}
+
+/* Продажи */
+
+.container_products_search, .container_sales_recipes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 49%;
+    height: auto;
+}
+
+#container_products{
+   border: 1px solid black;
+   width: 100%;
+   height: 574px;
+}
+
+.container_products_search h1{
+   margin-top: 10px;
+}
+
+#container_recipes, #container_sales {
+    border: 1px solid black;
+    width: auto;
+    height: 155px;
+}
+
+.container_label_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container_label_buttons button {
+    width: auto;
+}
+
+
+
+#sellButton {
+    width: 100%;
+}
+
+#shiftMenu {
+    display: none;
+    position: fixed;
+    border: 1px solid black;
+    padding: 10px;
+    width: 250px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#shiftMenu label{
+    color: black;
+}
+
+#shiftMenu input{
+    color: black;
+}
+
+
+#shiftMenu .redButton{
+    width: auto;
+    margin-left: 106px;
+}
+
+#totalSumSales {
+    width: 95px;
+    height: 35px;
+}
+
+.container_total {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.container_personaChoose {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    height: 89px;
+}
+
+#personaSelect {
+    margin-top: 5px;
+    height: 28px;
+    width: 297px;
+}
+
+/* Клиенты */
+
+#container_clients {
+    height: 550px;
+    width: 780px;
+    border: 1px solid black;
+}
+
+.personalInfo {
+    border: 1px solid black;
+    margin-bottom: 16px;
+    padding: 5px;
+}
+
+.clientInfo {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+
+/* Сотрудники */
+
+.employeeInfo {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.employeeInfo select {
+    width: 216px;
+    height: 38px;
+    margin: 11px;
+}
+
+/* Поиск */
+
+.container_searchBar {
+    border: 1px solid black;
+}
+
+.container_searchBar select {
+    margin-left: 20px;
+    height: 34px;
+    width: 140px;
+}
+
+.container_searchBar input {
+    width: 400px;
+}

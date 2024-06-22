@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="stylesheet" href="css/form.css">
+    <script src="modules/Functions.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+</head>
+
+
+<body>
+
+<header>
+
+    <a href="/mainPage">
+        <img id="img1" src="css/pictures/logo.png">
+    </a>
+
+    <h1>Система Аптечного Учета</h1>
+</header>
+
+<div class="container_body">
+    <div class="container_cards">
+
+        <a href="/client">
+            <div class="card">
+                <img src="css/pictures/client.png">
+                <h1> Клиенты </h1>
+            </div>
+        </a>
+
+
+        <a href="/employee">
+            <div class="card">
+                <img src="css/pictures/employee.png">
+                <h1> Сотрудники </h1>
+            </div>
+        </a>
+
+        <a href="/sale">
+            <div class="card">
+                <img src="css/pictures/sale.png">
+                <h1> Продажа </h1>
+            </div>
+        </a>
+
+        <a href="/provider">
+            <div class="card">
+                <img src="css/pictures/provider.png">
+                <h1> Поставщики </h1>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="container_reports">
+
+        <div class="report" id="supplyReport">
+            <h1>Отчет о поставках</h1>
+            <div>
+                <label for="начальная_дата_поставки">Начальная дата:</label>
+                <input type="date" id="начальная_дата_поставки" name="начальная_дата">
+            </div>
+            <div>
+                <label for="конечная_дата_поставки">Конечная дата:</label>
+                <input type="date" id="конечная_дата_поставки" name="конечная_дата">
+            </div>
+            <button onclick="CreateReportSupplies(supplyReport)" class="blueButton"> Получить отчет </button>
+        </div>
+
+        <div class="report" id="salesReport">
+            <h1>Отчет о продажах</h1>
+            <div>
+                <label for="начальная_дата_продажи">Начальная дата:</label>
+                <input type="date" id="начальная_дата_продажи" name="начальная_дата">
+            </div>
+            <div>
+                <label for="конечная_дата_продажи">Конечная дата:</label>
+                <input type="date" id="конечная_дата_продажи" name="конечная_дата">
+            </div>
+            <button onclick="CreateReportSales(salesReport)" class="blueButton"> Получить отчет </button>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

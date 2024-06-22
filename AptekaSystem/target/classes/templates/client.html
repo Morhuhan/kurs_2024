@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клиенты</title>
+    <link rel="stylesheet" href="css/form.css">
+    <script src="modules/Functions.js"> </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            ModalCreatePersonalCodeCheck();
+        });
+    </script>
+</head>
+
+<header>
+    <a href="/mainPage">
+        <img id="img1" src="css/pictures/logo.png">
+    </a>
+
+    <h1>Управление клиентами</h1>
+</header>
+
+<body>
+
+<div class="container_body">
+
+    <div class="container_table_searchbar_buttons">
+
+        <div id="container_clients" class="container_table">
+
+            <table class="table" id="clientsTable" name="покупатель">
+                <thead>
+                <tr>
+                    <th name="ид_клиента" hidden data-hide="true"></th>
+
+                    <th name="ид_персоны"
+                        data-expanded-source="персона"
+                        data-expanded-columns="фамилия"
+                        data-expanded-prefix="*">
+                        Фамилия</th>
+
+                    <th name="ид_персоны"
+                        data-expanded-source="персона"
+                        data-expanded-columns="имя"
+                        data-expanded-prefix="*">
+                        Имя</th>
+
+                    <th name="ид_персоны"
+                        data-expanded-source="персона"
+                        data-expanded-columns="отчество"
+                        data-expanded-prefix="*">
+                        Отчество</th>
+
+                    <th name="ид_персоны"
+                        data-expanded-source="персона"
+                        data-expanded-columns="дата_рождения"
+                        data-expanded-prefix="*">
+                        Д.Р.</th>
+
+                    <th name="ид_персоны"
+                        data-expanded-source="персона"
+                        data-expanded-columns="телефон"
+                        data-expanded-prefix="*">
+                        Телефон</th>
+
+                    <th name="скидка">Скидка в процентах</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="container_searchBar">
+            <select id="clientsSelect">
+            </select>
+            <input type="text"  id="clientsSearchInput" placeholder="Введите данные для поиска" onchange="MakeSearch(clientsSelect, clientsTable, clientsSearchInput)">
+        </div>
+
+        <div class="container_buttons">
+            <button class="greenButton" onclick="ModalCreateClient(clientsTable)">Добавить</button>
+            <button class="redButton" onclick="RemoveClient(clientsTable)">Удалить</button>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

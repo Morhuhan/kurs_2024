@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персонал</title>
+    <link rel="stylesheet" href="css/form.css">
+    <script src="modules/Functions.js"> </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            ModalCreatePersonalCodeCheck();
+        });
+    </script>
+</head>
+
+<header>
+    <a href="/mainPage">
+        <img id="img1" src="css/pictures/logo.png">
+    </a>
+
+    <h1>Управление сотрудниками</h1>
+
+</header>
+
+<body>
+
+<div class="container_body">
+
+    <div class="container_table_searchbar_buttons">
+
+        <div id="container_employee" class="container_table">
+
+            <table class="table" id="employeeTable" name="сотрудник">
+                <thead>
+                <tr>
+                    <th name="ид_сотрудника" hidden data-hide="true"></th>
+
+                    <th name="ид_персоны"
+                        data-expanded-source="персона"
+                        data-expanded-columns="фамилия"
+                        data-expanded-prefix="*">
+                        Фамилия</th>
+
+                    <th name="ид_персоны"
+                        data-expanded-source="персона"
+                        data-expanded-columns="имя"
+                        data-expanded-prefix="*">
+                        Имя</th>
+
+                    <th name="ид_персоны"
+                        data-expanded-source="персона"
+                        data-expanded-columns="отчество"
+                        data-expanded-prefix="*">
+                        Отчество</th>
+
+                    <th name="ид_персоны"
+                        data-expanded-source="персона"
+                        data-expanded-columns="дата_рождения"
+                        data-expanded-prefix="*">
+                        Д.Р.</th>
+
+                    <th name="ид_документа"
+                        data-expanded-source="документ"
+                        data-expanded-columns="номер"
+                        data-expanded-prefix="*">
+                        Номер паспорта</th>
+
+                    <th name="ид_документа"
+                        data-expanded-source="документ"
+                        data-expanded-columns="серия"
+                        data-expanded-prefix="*">
+                        Серия паспорта</th>
+
+                    <th name="ид_персоны"
+                        data-expanded-source="персона"
+                        data-expanded-columns="телефон"
+                        data-expanded-prefix="*">
+                        Телефон</th>
+
+                    <th name="ид_должности"
+                        data-expanded-source="должность"
+                        data-expanded-columns="название"
+                        data-expanded-prefix="*">
+                        Должность</th>
+
+                    <th name="ид_должности"
+                        data-expanded-source="должность"
+                        data-expanded-columns="уровень_доступа"
+                        data-expanded-prefix="*">
+                        Уровень доступа</th>
+
+                    <th name="персональный_код">Персональный код</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="container_searchBar">
+            <select id="employeeSelect">
+            </select>
+            <input type="text"  id="employeeSearchInput" placeholder="Введите данные для поиска" onchange="MakeSearch(employeeSelect, employeeTable, employeeSearchInput)">
+        </div>
+
+        <div class="container_buttons">
+            <button class="greenButton" onclick="ModalCreateEmployee(employeeTable)">Добавить</button>
+            <button class="redButton" onclick="RemoveEmployee(employeeTable)">Удалить</button>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

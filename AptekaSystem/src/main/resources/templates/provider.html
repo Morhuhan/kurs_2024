@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поставки</title>
+    <link rel="stylesheet" href="css/form.css">
+    <script src="modules/Functions.js"> </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            ModalCreatePersonalCodeCheck();
+        });
+    </script>
+</head>
+
+<header>
+    <a href="/mainPage">
+        <img id="img1" src="css/pictures/logo.png">
+    </a>
+
+    <h1>Управление поставками</h1>
+</header>
+
+<body>
+
+<div class="container_body">
+
+    <div class="container_provider_table_search">
+
+        <div id="container_providers" class="container_table">
+
+            <table class="table" id="providersTable" name="поставщик">
+                <thead>
+                <tr>
+                    <th name="ид_поставщика" hidden data-hide="true"> </th>
+
+                    <th name="название">Название поставщика</th>
+
+                    <th name="ид_каталога"
+                        data-expanded-source="каталог"
+                        data-expanded-columns="название"
+                        data-expanded-prefix="*">
+                        Название лекарства</th>
+
+                    <th name="ид_каталога"
+                        data-expanded-source="каталог"
+                        data-expanded-columns="производитель"
+                        data-expanded-prefix="*">
+                        Производитель</th>
+
+                    <th name="ид_каталога"
+                        data-expanded-source="каталог"
+                        data-expanded-columns="ид_каталога"
+                        data-expanded-prefix="*">
+                        ID по каталогу</th>
+
+                    <th name="количество"> В наличии </th>
+
+                    <th name="оптовая_цена"> Оптовая цена </th>
+
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="container_searchBar">
+            <select id="providersSelect">
+            </select>
+            <input type="text"  id="providersSearchInput" placeholder="Введите данные для поиска" onchange="MakeSearch(providersSelect, providersTable, providersSearchInput)">
+        </div>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>

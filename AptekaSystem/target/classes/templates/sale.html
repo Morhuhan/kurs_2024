@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Продажа</title>
+    <link rel="stylesheet" href="css/form.css">
+    <script src="modules/Functions.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            ModalCreatePersonalCodeCheck();
+        });
+
+    </script>
+</head>
+
+<header>
+
+    <a href="/mainPage">
+        <img id="img1" src="css/pictures/logo.png">
+    </a>
+
+    <button id="shiftInfoButton" onclick="ToggleShiftInfo()" class="blueButton">
+        Смена
+        <span>&#9660;</span>
+    </button>
+
+    <button id="refreshButton" onclick="UpdateSalePage(productsTable, salesTable, buyersModule)" class="blueButton">
+        Обновить
+    </button>
+
+    <h1>Управление продажами</h1>
+
+    <div id="shiftMenu" class="shiftMenu">
+        <label for="employeeNumber">Номер сотрудника:</label>
+        <input id="employeeNumber" type="text" readonly><br><br>
+        <label for="startTime">Начало:</label>
+        <input id="startTime" type="text" readonly><br><br>
+        <label for="timePassed">Прошло:</label>
+        <input id="timePassed" type="text" ><br><br>
+        <label for="totalSumShift">Сумма:</label>
+        <input type="text" id="totalSumShift" readonly>
+
+        <input id="endTime" type="hidden" value="">
+        <input id="shiftId" type="hidden" value="">
+
+        <button class="redButton" onclick="CloseShift()">Завершить смену</button>
+    </div>
+</header>
+
+<body>
+
+
+
+<div class="container_body">
+
+    <div class="container_products_search">
+
+        <h1> Товары </h1>
+
+        <div id="container_products" class="container_table">
+
+            <table class="table" id="productsTable" name="лекарство" data-attributes="в_наличии=true">
+                <thead>
+                <tr>
+                    <th name="ид_лекарства" hidden data-hide="true"></th>
+
+                    <th name="серийный_номер"> Серийный номер</th>
+
+                    <th name="ид_каталога"
+                        data-expanded-source="каталог"
+                        data-expanded-columns="название"
+                        data-expanded-prefix="*">
+                        Название</th>
+
+                    <th name="ид_каталога"
+                        data-expanded-source="каталог"
+                        data-expanded-columns="производитель"
+                        data-expanded-prefix="*">
+                        Производитель</th>
+
+                    <th name="ид_каталога"
+                        data-expanded-source="каталог"
+                        data-expanded-columns="дозировка"
+                        data-expanded-prefix="*">
+                        Дозировка</th>
+
+                    <th name="ид_каталога"
+                        data-expanded-source="каталог"
+                        data-expanded-columns="по_рецепту"
+                        data-expanded-prefix="*">
+                        По рецепту</th>
+
+                    <th name="цена"> Цена </th>
+
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="container_searchBar">
+            <select id="productsSelect">
+            </select>
+            <input type="text"  id="productsSearchInput" placeholder="Введите данные для поиска" onchange="MakeSearch(productsSelect, productsTable, productsSearchInput)">
+        </div>
+
+    </div>
+
+    <div class="container_sales_recipes">
+
+        <div class="container_recipes_search_buttons">
+
+            <div class="container_label_buttons">
+                <h1> Рецепт </h1>
+                <div class="container_buttons">
+                    <button class="greenButton" onclick="GenerateRandomRecipe(recipesTable)">Сгенерировать</button>
+                </div>
+            </div>
+
+            <div id="container_recipes" class="container_table">
+                <table class="table" id="recipesTable" name="рецепт">
+                    <thead>
+                    <tr>
+                        <th name="ид_каталога">Номер по каталогу</th>
+                        <th name="название">Название</th>
+                        <th name="производитель">Производитель</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Здесь будет динамически заполняться таблица -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="container_personaChoose" id="buyersModule">
+            <h1> Клиент </h1>
+            <select id="personaSelect" >
+                <option>-</option>
+            </select>
+            <div class="container_total">
+                <label for="totalSumSales">Скидка %:</label>
+                <input type="text" id="discount" onchange="UpdateTotalSumSale()" readonly>
+            </div>
+        </div>
+
+        <div class="container_sales_search_buttons">
+
+            <div class="container_label_buttons">
+                <h1> Продажа </h1>
+                <div class="container_buttons">
+                    <button class="greenButton" onclick="SalesAddButtonClick(productsTable, salesTable, recipesTable, totalSumSales)">Добавить</button>
+                    <button class="redButton" onclick="SalesDeleteButtonClick(productsTable, salesTable)">Убрать</button>
+                </div>
+            </div>
+
+            <div id="container_sales" class="container_table">
+                <table class="table" id="salesTable" name="лекарство">
+                    <thead>
+                    <tr>
+                        <th name="ид_лекарства" data-hide="true">Серийный номер</th>
+
+                        <th name="серийный_номер"> Серийный номер</th>
+
+                        <th name="ид_каталога"
+                            data-expanded-source="каталог"
+                            data-expanded-columns="название"
+                            data-expanded-prefix="*">
+                            Название</th>
+
+                        <th name="ид_каталога"
+                            data-expanded-source="каталог"
+                            data-expanded-columns="производитель"
+                            data-expanded-prefix="*">
+                            Производитель</th>
+
+                        <th name="ид_каталога"
+                            data-expanded-source="каталог"
+                            data-expanded-columns="дозировка"
+                            data-expanded-prefix="*">
+                            Дозировка</th>
+
+                        <th name="ид_каталога"
+                            data-expanded-source="каталог"
+                            data-expanded-columns="по_рецепту"
+                            data-expanded-prefix="*">
+                            По рецепту</th>
+
+                        <th name="цена"> Цена </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Здесь будет динамически заполняться таблица -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="container_searchBar_total">
+                <div class="container_total">
+                    <label for="totalSumSales">Сумма:</label>
+                    <input type="text" id="totalSumSales" readonly>
+                    <label for="totalSumSalesWithDiscount">Со скидкой:</label>
+                    <input type="text" id="totalSumSalesWithDiscount" readonly>
+                </div>
+            </div>
+        </div>
+
+        <button class="greenButton" id="sellButton" onclick="SubmitSaleClick(salesTable, totalSumShift, totalSumSales, totalSumSalesWithDiscount, buyersModule)"> Продать </button>
+    </div>
+</div>
+
+</body>
+</html>
